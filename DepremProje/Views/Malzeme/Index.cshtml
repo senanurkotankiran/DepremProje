@@ -1,0 +1,35 @@
+﻿@model List<DepremProje.Models.Malzeme>
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_DepremLayout.cshtml";
+}
+
+<h1>Malzemeler Listesi</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Malzeme Ad</th>
+        <th>Kategori ID</th>
+        <th>Stok</th>
+        <th>Malzeme Açıklaması</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.MalzemeId</td>
+            <td>@x.MalzemeAdi</td>
+            <td>@x.KategoriId</td>
+            <td>@x.MalzemeStokAdedi</td>
+            <td>@x.MalzemeAciklamasi</td>
+            <td><a href="/Malzeme/MalzemeSil/@x.MalzemeId" class="btn btn-danger">Delete</a></td>
+            <td><a href="/Malzeme/MalzemeGet/@x.MalzemeId" class="btn btn-warning">Guncelle</a></td>
+        </tr>
+    }
+
+</table>
+<a href="/Malzeme/MalzemeEkle/" class="btn btn-primary">Malzeme Ekle</a>

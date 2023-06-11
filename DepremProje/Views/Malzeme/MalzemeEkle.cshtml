@@ -1,0 +1,28 @@
+﻿@model DepremProje.Models.Malzeme
+@{
+    ViewData["Title"] = "MalzemeEkle";
+    Layout = "~/Views/Shared/_DepremLayout.cshtml";
+}
+
+<h1>Malzeme Ekle</h1>
+
+<br />
+@using (Html.BeginForm("MalzemeEkle", "Malzeme", FormMethod.Post))
+{
+    @Html.Label("Malzeme Ad ")
+    @Html.TextBoxFor(x=>x.MalzemeAdi,new{@class="form-control"} )
+    @* @Html.ValidationMessageFor(x=>x.KategoriAdi,"",new {@style="color:red"})*@
+    <br />
+    @Html.LabelFor(x=>x.Kategori.KategoriAdi, new { @class = "form-control" })
+    @Html.DropDownListFor(x=>x.KategoriId,(List<SelectListItem>)ViewBag.v1,  new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Stok")
+    @Html.TextBoxFor(x=>x.MalzemeStokAdedi,new{@class="form-control"} )
+    <br />
+    @Html.Label("Açıklama")
+    @Html.TextAreaFor(x=>x.MalzemeAciklamasi,new{@class="form-control"} )
+    <br />
+
+    <button class="btn btn-info">Kaydet</button>
+}

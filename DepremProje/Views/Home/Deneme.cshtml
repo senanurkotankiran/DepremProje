@@ -1,0 +1,39 @@
+﻿@model DepremProje.Models.Talep
+@{
+    Layout = null;
+}
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<script>
+    $(function () {
+        $('#DrpSehir').change(function () {
+            var id = $('#DrpSehir').val();
+            $.ajax({
+                url: '/Home/ilcegetir',
+                data: { p: id },
+                type: "POST",
+                dataType: "Json",
+                success: function (data) {
+                    console.log(data);
+                    $('#Drpilce').empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $('#Drpilce').append("<option value='" + data[i].Value + "'>" + data[i].Text + "</Option>");
+                    }
+                }
+            });
+        });
+    });
+</script>
+<div>
+    <h3>Iller Ilceler</h3>
+</div>
+<br />
+@*
+<div style="margin-left:50px">
+    @Html.Label("İller")
+    @Html.DropDownList("DrpSehir", Model.Sehirler, "--Şehir Seçin--", new{@class="form-control"})
+    <br />
+    @Html.Label("İlceler")
+    @Html.DropDownList("DrpIlce", Model.Ilceler, "--Ilce Seçin--", new{@class="form-control"})
+</div>
+*@

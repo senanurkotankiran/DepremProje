@@ -1,0 +1,21 @@
+﻿@model DepremProje.Models.Arac
+@{
+    ViewData["Title"] = "AracGet";
+    Layout = "~/Views/Shared/_DepremLayout.cshtml";
+}
+
+@using (Html.BeginForm("AracGuncelle", "Arac", FormMethod.Post))
+{
+    @Html.LabelFor(x=>x.AracId)
+    @Html.TextBoxFor(x=>x.AracId,new{@class="form-control"} )
+    @Html.LabelFor(x=>x.AracPlaka)
+    @Html.TextBoxFor(x=>x.AracPlaka,new{@class="form-control"} )
+    @* @Html.ValidationMessageFor(x=>x.KategoriAdi,"",new {@style="color:red"})*@
+    <br />
+    @Html.LabelFor(x=>x.AracOzellikleri)
+    @Html.TextBoxFor(x=>x.AracOzellikleri,new{@class="form-control"} )
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+}
+
+

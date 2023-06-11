@@ -1,0 +1,20 @@
+﻿@model DepremProje.Models.Kategori
+@{
+    ViewData["Title"] = "KategoriEkle";
+    Layout = "~/Views/Shared/_DepremLayout.cshtml";
+}
+
+<h1>Kategori Ekle</h1>
+
+<br />
+@using (Html.BeginForm("KategoriEkle", "Kategori", FormMethod.Post))
+{
+    @Html.LabelFor(x=>x.KategoriAdi)
+    @Html.TextBoxFor(x=>x.KategoriAdi,new{@class="form-control"} )
+   @* @Html.ValidationMessageFor(x=>x.KategoriAdi,"",new {@style="color:red"})*@
+    <br />
+    @Html.LabelFor(x=>x.KategoriAciklamasi)
+    @Html.TextBoxFor(x=>x.KategoriAciklamasi,new{@class="form-control"} )
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+}

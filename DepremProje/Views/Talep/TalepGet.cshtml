@@ -1,0 +1,47 @@
+﻿@model DepremProje.Models.Talep
+@{
+    ViewData["Title"] = "TalepGet";
+    Layout = "~/Views/Shared/_DepremLayout.cshtml";
+}
+
+@using (Html.BeginForm("TalepGuncelle", "Talep", FormMethod.Post))
+{
+    @Html.Label("ID ")
+    @Html.TextBoxFor(x=>x.TalepId,new{@class="form-control"} )
+    <br />
+    @Html.Label("Ad ")
+    @Html.TextBoxFor(x=>x.KisiAdi,new{@class="form-control"} )
+    <br />
+    @Html.Label("SoyAd ")
+    @Html.TextBoxFor(x=>x.KisiSoyadi,new{@class="form-control"} )
+    <br />
+    @Html.Label("Tc ")
+    @Html.TextBoxFor(x=>x.KisiTC,new{@class="form-control"} )
+    <br />
+    @Html.Label("Doğum Tarihi ")
+    @Html.TextBoxFor(x=>x.KisiDogumTarihi,new{@class="form-control"} )
+
+
+    <br />
+    @Html.LabelFor(x=>x.Sehir.SehirAdi,new { @class = "form-control" })
+    @Html.DropDownListFor(x=>x.SehirId,(List<SelectListItem>)ViewBag.v1,  new { @class = "form-control" })
+    <br />
+
+    <br />
+    @Html.LabelFor(x=>x.Ilce.IlceAdi,new { @class = "form-control" })
+    @Html.DropDownListFor(x=>x.IlceId,(List<SelectListItem>)ViewBag.v2,  new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x=>x.Malzeme.MalzemeAdi,new { @class = "form-control" })
+    @Html.DropDownListFor(x=>x.MalzemeId,(List<SelectListItem>)ViewBag.v3,  new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Açık Adres")
+    @Html.TextAreaFor(x=>x.TalepAcikAdresi,new{@class="form-control"} )
+    <br />
+
+
+
+    <button class="btn btn-info">Kaydet</button>
+}
+

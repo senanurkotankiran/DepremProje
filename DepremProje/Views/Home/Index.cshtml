@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<select id="SehirSecim" asp-items="ViewBag.Sehir">
+    <option>Sehir Seçin</option>
+</select>
+
+<select id="SehirList"></select>
+
+@section Scripts{
+    <script>
+
+        $(function(){
+            $("SehirSecim").change(function () {
+                $("SehirList").empty();
+
+                $.ajax({
+                    url:'/Home/Ilce_Gosterim',
+                    dataType:'json',
+                    data:{id:$("SehirSecim").val()},
+                    success: function(data){
+                        $("SehirList").append("<option value='-1'> Ilce Secin </option> ");
+
+                        $.each(data,(index,value)=>{
+                            $("SehirList").append('<option value="${value.value}" > ${value.text} </option>');
+                        });
+                    }
+                })
+            });
+        })
+
+    </script>
+}

@@ -1,0 +1,43 @@
+﻿@model List<DepremProje.Models.Talep>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_DepremLayout.cshtml";
+}
+
+<h1> Talep Listesi</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Kisi Adi</th>
+        <th>Kisi Soyadi</th>
+        <th>TC</th>
+        <th>Kisi Dogum Tarihi</th>
+        <th>Talep Sehiri</th>
+        <th>Talep Ilcesi</th>
+        <th>Talep Acik Adresi</th>
+        <th>Status</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.TalepId</td>
+            <td>@x.KisiAdi</td>
+            <td>@x.KisiSoyadi</td>
+            <td>@x.KisiTC</td>
+            <td>@x.KisiDogumTarihi</td>
+            <td>@x.SehirId</td>
+            <td>@x.IlceId</td>
+            <td>@x.TalepAcikAdresi</td>
+            <td>@x.Status</td>
+            <td><a href="/Talep/TalepGet/@x.TalepId/" class="btn btn-success">Update</a></td>
+            <td><a href="/Talep/TalepSil/@x.TalepId" class="btn btn-danger">Delete</a></td>
+        </tr>
+    }
+
+</table>
+<a href="/Talep/TalepEKle/" class="btn btn-primary">Talep Ekle</a>
+

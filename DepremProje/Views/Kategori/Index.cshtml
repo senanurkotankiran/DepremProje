@@ -1,0 +1,29 @@
+﻿@model List<DepremProje.Models.Kategori>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_DepremLayout.cshtml";
+}
+
+<h1>Burası Kategori listesi</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Kategori Adı</th>
+        <th>Kategori Açıklaması</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.KategoriId</td>
+            <td>@x.KategoriAdi</td>
+            <td>@x.KategoriAciklamasi</td>
+            <td><a href="#" class="btn btn-danger">Delete</a></td>
+            <td><a href="/Kategori/KategoriGet/@x.KategoriId" class="btn btn-warning">Guncelle</a></td>
+        </tr>
+    }
+
+</table>
+<a href="/Kategori/KategoriEkle" class="btn btn-primary">Kategori Ekle</a>

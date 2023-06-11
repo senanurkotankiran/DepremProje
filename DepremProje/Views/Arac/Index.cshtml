@@ -1,0 +1,31 @@
+﻿@model List<DepremProje.Models.Arac>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_DepremLayout.cshtml";
+}
+
+<h1>Burası Arac listesi</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Araç Plaka</th>
+        <th>Araç Özellikler</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.AracId</td>
+            <td>@x.AracPlaka</td>
+            <td>@x.AracOzellikleri</td>
+            <td><a href="/Arac/AracSil/@x.AracId" class="btn btn-danger">Delete</a></td>
+            <td><a href="/Arac/AracGet/@x.AracId" class="btn btn-warning">Guncelle</a></td>
+        </tr>
+    }
+
+</table>
+<a href="/Arac/AracEkle" class="btn btn-primary">Arac Ekle</a>
+
+
